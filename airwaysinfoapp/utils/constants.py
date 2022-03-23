@@ -1,6 +1,6 @@
 from random import randint
 
-FIRST_NAME_INDEX = 0
+LAST_NAME_INDEX = 1
 
 FLIGHT_TEMPLATES = [
     {
@@ -31,3 +31,13 @@ FLIGHT_TEMPLATES = [
         'price': randint(1000, 3000),
     },
 ]
+
+PLANES = [{'name': 'Airbus A310', 'available_places': 183},
+          {'name': 'Airbus A320', 'available_places': 259},
+          {'name': 'Airbus A330', 'available_places': 440},
+          {'name': 'Boeing-737', 'available_places': 114 },
+          {'name': 'Boeing-747', 'available_places': 370},
+          {'name': 'Boeing-767', 'available_places': 385},
+          {'name': 'Boeing-777', 'available_places': 235},
+
+          ]
