@@ -26,10 +26,12 @@ def planes_filler():
 
 
 def companies_filler(companies_amount=10):
-    last_name = faker.name().split()[LAST_NAME_INDEX]
-    name_endings = ['& Co', 'Airlines', 'Group', f'& {last_name}']
+
     names = set()
     for _ in range(companies_amount):
+        last_name = faker.name().split()[LAST_NAME_INDEX]
+        second_last_name = faker.name().split()[LAST_NAME_INDEX]
+        name_endings = ['& Co', 'Airlines', 'Group', f'& {second_last_name}']
         name = f'{last_name} {name_endings[randint(0, len(name_endings)-1)]}'
         names.add(name)
     companies = [Company(
@@ -55,9 +57,12 @@ def flights_creator():
 
 
 def main():
+    print('Creating Planes...')
     planes_filler()
+    print('Creating Companies...')
     companies_filler()
     try:
+        print('Creating Flights...')
         flights_creator()
     except Exception as e:
         print(e)

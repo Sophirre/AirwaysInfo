@@ -7,6 +7,9 @@ from airwaysinfoapp.models import (
 
 
 class FlightSerializer(serializers.ModelSerializer):
+    plane = serializers.CharField(source='plane.name')
+    company = serializers.CharField(source='company.name')
+
     class Meta:
         model = Flight
         fields = (
@@ -22,7 +25,7 @@ class FlightSerializer(serializers.ModelSerializer):
         try:
             Flight.objects.get(title=flight)
         except Flight.DoesNotExist:
-            print(f"Flight:{flight} DoesNotExist")
+            print(f"Flight: {flight} DoesNotExist")
         else:
             raise serializers.ValidationError(
                 {"error": f"Flight:{flight} already exists"}
@@ -53,8 +56,6 @@ class CompanySerializer(serializers.ModelSerializer):
 
 
 class PlaneSerializer(serializers.ModelSerializer):
-    # plane_name = serializers.CharField(source='name')
-
     class Meta:
         model = Plane
         fields = ('name', 'year_of_manufacture', 'available_places')
